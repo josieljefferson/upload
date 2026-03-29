@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="description" content="IPTV System - Playlists e streams ao vivo">
+    <title>IPTV System - Plataforma Profissional</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="page-loader">
+        <div class="loader-spinner"></div>
+    </div>
+
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-icon">📺</span>
+                <span class="logo-text">IPTV System</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="active">Início</a>
+                <a href="login.html">Login</a>
+                <a href="register.html">Cadastro</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Plataforma IPTV Profissional</h1>
+                <p>Acesse centenas de canais com qualidade e estabilidade</p>
+                <div class="hero-buttons">
+                    <a href="register.html" class="btn btn-primary">Começar Agora</a>
+                    <a href="#features" class="btn btn-secondary">Saiba Mais</a>
+                </div>
+                <div class="status-badge online" id="apiStatus">🟢 Sistema Online</div>
+            </div>
+        </section>
+
+        <section id="features" class="features">
+            <div class="container">
+                <h2>Recursos Exclusivos</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🎬</div>
+                        <h3>Canais em HD</h3>
+                        <p>Acesso a centenas de canais nacionais e internacionais em alta definição</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3>Alta Qualidade</h3>
+                        <p>Streaming otimizado sem travamentos com servidores dedicados</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📱</div>
+                        <h3>Multiplataforma</h3>
+                        <p>Compatível com Smart TVs, Celulares, Tablets e Computadores</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔒</div>
+                        <h3>Segurança</h3>
+                        <p>Sistema com autenticação e criptografia para proteger seus dados</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="how-it-works">
+            <div class="container">
+                <h2>Como Funciona</h2>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h3>Crie sua Conta</h3>
+                        <p>Registre-se gratuitamente na plataforma em menos de 1 minuto</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h3>Faça Login</h3>
+                        <p>Acesse sua conta com usuário e senha cadastrados</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h3>Configure seu Player</h3>
+                        <p>Use a URL gerada no seu IPTV player favorito</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <h3>Assista Online</h3>
+                        <p>Use nosso player web ou qualquer player compatível</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="stats">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number" id="channel-count">0</div>
+                        <div class="stat-label">Canais Disponíveis</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="user-count">0</div>
+                        <div class="stat-label">Usuários Ativos</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Suporte</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">99.9%</div>
+                        <div class="stat-label">Uptime</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta">
+            <div class="container">
+                <h2>Pronto para começar?</h2>
+                <p>Junte-se a milhares de usuários e tenha a melhor experiência IPTV</p>
+                <a href="register.html" class="btn btn-primary btn-large">Cadastre-se Grátis</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>IPTV System</h4>
+                    <p>Sua plataforma de IPTV profissional e confiável</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Links Úteis</h4>
+                    <ul>
+                        <li><a href="#">Sobre Nós</a></li>
+                        <li><a href="#">Termos de Uso</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Suporte</h4>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Tutoriais</a></li>
+                        <li><a href="#">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 IPTV System - Todos os direitos reservados</p>
+                <p>Desenvolvido por Josiel Jefferson</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

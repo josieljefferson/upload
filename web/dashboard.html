@@ -1,0 +1,155 @@
+<!DOCTYPE html>  
+<html lang="pt-br">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>Dashboard - Sistema IPTV</title>  
+    <link rel="stylesheet" href="style.css">  
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">  
+</head>  
+<body>  
+    <nav class="navbar">  
+        <div class="container">  
+            <div class="logo">  
+                <span class="logo-icon">📺</span>  
+                <span class="logo-text">Sistema IPTV</span>  
+            </div>  
+            <div class="nav-links">  
+                <span id="userGreeting" class="user-greeting"></span>  
+                <button id="logoutBtn" class="btn-logout" data-tooltip="Sair da conta">Sair</button>  
+            </div>  
+        </div>  
+    </nav>  
+  
+    <main class="dashboard">  
+        <div class="container">  
+            <div class="dashboard-header">  
+                <h1>Minha Playlist IPTV</h1>  
+                <p>Acesse sua lista de canais nos players compatíveis</p>  
+                <div class="status-badge online" id="apiStatus">API Online</div>  
+            </div>  
+  
+            <div class="playlist-info">  
+  
+                <!-- 📺 Playlist -->
+                <div class="info-card">  
+                    <h3>📺 URL da Playlist M3U</h3>  
+                    <div class="url-container">  
+                        <input type="text" id="playlistUrl" readonly>  
+                        <button id="copyUrlBtn" class="btn-copy" data-tooltip="Copiar URL">Copiar</button>  
+                    </div>  
+                    <p class="info-text">Use esta URL no VLC, Kodi, IPTV Smarters e outros players compatíveis</p>  
+                </div>  
+  
+                <!-- 🔗 API -->
+                <div class="info-card">  
+                    <h3>🔗 API Compatível (Legado)</h3>  
+                    <div class="url-container">  
+                        <input type="text" id="apiUrl" readonly>  
+                        <button id="copyApiBtn" class="btn-copy" data-tooltip="Copiar URL">Copiar</button>  
+                    </div>  
+                    <p class="info-text">Para players que usam o formato antigo de API (get.php)</p>  
+                    <small class="form-text">⚠️ Substitua ******** pela sua senha</small>  
+                </div>  
+
+                <!-- 🎮 Web Player -->
+                <div class="info-card">  
+                    <h3>🎮 Web Player Online</h3>  
+                    <button id="openPlayerBtn" class="btn btn-primary" style="width: 100%; margin-top: 10px;">  
+                        ▶️ Assistir Online  
+                    </button>  
+                    <p class="info-text">Assista diretamente no navegador sem precisar de outros players</p>  
+                </div>  
+
+            </div>  
+  
+            <div class="players-section">  
+                <h2>Como Configurar nos Principais Players</h2>  
+                <div class="players-grid">  
+                    <div class="player-card">  
+                        <div class="player-icon">💻</div>  
+                        <h3>VLC Media Player</h3>  
+                        <ol>  
+                            <li>Abra o VLC Media Player</li>  
+                            <li>Clique em "Mídia" → "Abrir URL de Rede"</li>  
+                            <li>Cole a URL da playlist acima</li>  
+                            <li>Clique em "Reproduzir"</li>  
+                            <li>Os canais aparecerão na lista de reprodução</li>  
+                        </ol>  
+                    </div>  
+
+                    <div class="player-card">  
+                        <div class="player-icon">📱</div>  
+                        <h3>IPTV Smarters Pro</h3>  
+                        <ol>  
+                            <li>Baixe o app na Play Store/App Store</li>  
+                            <li>Abra o app e aceite os termos</li>  
+                            <li>Selecione "Carregar sua playlist ou arquivo"</li>  
+                            <li>Escolha "Usar URL"</li>  
+                            <li>Cole a URL e clique em "Adicionar usuário"</li>  
+                            <li>Os canais serão carregados automaticamente</li>  
+                        </ol>  
+                    </div>  
+
+                    <div class="player-card">  
+                        <div class="player-icon">🎬</div>  
+                        <h3>Kodi</h3>  
+                        <ol>  
+                            <li>Abra o Kodi e vá em "Add-ons"</li>  
+                            <li>Procure por "PVR IPTV Simple Client"</li>  
+                            <li>Instale o addon</li>  
+                            <li>Vá em Configurações → Geral</li>  
+                            <li>Em "Localização M3U", selecione "URL"</li>  
+                            <li>Cole a URL e clique em OK</li>  
+                            <li>Ative o addon e reinicie o Kodi</li>  
+                        </ol>  
+                    </div>  
+
+                    <div class="player-card">  
+                        <div class="player-icon">📺</div>  
+                        <h3>Smart TV (Samsung/LG)</h3>  
+                        <ol>  
+                            <li>Baixe o app "Smart IPTV" na loja da TV</li>  
+                            <li>Abra o app e anote o MAC Address</li>  
+                            <li>Acesse o site do app no celular/PC</li>  
+                            <li>Adicione a URL da playlist</li>  
+                            <li>Reinicie o app na TV</li>  
+                            <li>Os canais serão carregados</li>  
+                        </ol>  
+                    </div>  
+                </div>  
+            </div>  
+  
+            <div class="tips-section">  
+                <h2>💡 Dicas Importantes</h2>  
+                <div class="tips-grid">  
+                    <div class="tip-card">  
+                        <h3>🔄 Atualização Automática</h3>  
+                        <p>A playlist é atualizada automaticamente a cada 6 horas. Você não precisa fazer nada!</p>  
+                    </div>  
+                    <div class="tip-card">  
+                        <h3>📡 EPG (Guia de Programação)</h3>  
+                        <p>O sistema já inclui múltiplas fontes de EPG para melhor experiência.</p>  
+                    </div>  
+                    <div class="tip-card">  
+                        <h3>🔒 Segurança</h3>  
+                        <p>Nunca compartilhe sua URL com outras pessoas. Cada usuário tem acesso individual.</p>  
+                    </div>  
+                    <div class="tip-card">  
+                        <h3>⚡ Performance</h3>  
+                        <p>Use uma conexão de internet estável (recomendado 10 Mbps ou mais).</p>  
+                    </div>  
+                </div>  
+            </div>  
+        </div>  
+    </main>  
+  
+    <footer>  
+        <div class="container">  
+            <p>&copy; 2024 Sistema IPTV - Todos os direitos reservados</p>  
+        </div>  
+    </footer>  
+  
+    <script src="script.js"></script>  
+</body>  
+</html>
