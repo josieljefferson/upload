@@ -532,3 +532,212 @@ function openPlayer() {
     window.location.href = 'player.html';
     return true;
 }
+
+// ADICIONADO
+
+// Adicionar ao final do script.js existente
+
+// Loader
+window.addEventListener('load', () => {
+    const loader = document.querySelector('.page-loader');
+    if (loader) {
+        setTimeout(() => {
+            loader.style.opacity = '0';
+            setTimeout(() => {
+                loader.style.display = 'none';
+            }, 500);
+        }, 500);
+    }
+});
+
+// Navbar scroll effect
+window.addEventListener('scroll', () => {
+    const navbar = document.querySelector('.navbar');
+    if (navbar && window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+    } else if (navbar) {
+        navbar.classList.remove('scrolled');
+    }
+});
+
+// Animação de números (counter)
+function animateNumbers() {
+    const statNumbers = document.querySelectorAll('.stat-number[data-target]');
+    
+    statNumbers.forEach(stat => {
+        const target = parseInt(stat.getAttribute('data-target'));
+        const duration = 2000;
+        const step = target / (duration / 16);
+        let current = 0;
+        
+        const updateNumber = () => {
+            current += step;
+            if (current < target) {
+                stat.textContent = Math.floor(current);
+                requestAnimationFrame(updateNumber);
+            } else {
+                stat.textContent = target;
+            }
+        };
+        
+        updateNumber();
+    });
+}
+
+// Intersection Observer para animações
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('fade-in');
+            
+            // Se for seção de estatísticas, animar números
+            if (entry.target.classList.contains('stats')) {
+                animateNumbers();
+            }
+            
+            observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+
+// Observar elementos para fade-in
+document.querySelectorAll('.feature-card, .step, .player-card, .tip-card, .testimonial-card, .stats').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+});
+
+// Adicionar classe fade-in
+const style = document.createElement('style');
+style.textContent = `
+    .fade-in {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+    }
+`;
+document.head.appendChild(style);
+
+// Tooltips dinâmicos
+document.querySelectorAll('[data-tooltip]').forEach(element => {
+    element.addEventListener('mouseenter', (e) => {
+        const tooltip = document.createElement('div');
+        tooltip.textContent = element.getAttribute('data-tooltip');
+        tooltip.style.cssText = `
+            position: fixed;
+            background: rgba(0,0,0,0.9);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 8px;
+            font-size: 12px;
+            z-index: 10000;
+            pointer-events: none;
+            white-space: nowrap;
+            font-family: 'Inter', sans-serif;
+        `;
+        document.body.appendChild(tooltip);
+        
+        const updatePosition = (e) => {
+            tooltip.style.left = e.pageX + 15 + 'px';
+            tooltip.style.top = e.pageY - 25 + 'px';
+        };
+        
+        updatePosition(e);
+        
+        element.addEventListener('mousemove', updatePosition);
+        
+        element.addEventListener('mouseleave', () => {
+            tooltip.remove();
+            element.removeEventListener('mousemove', updatePosition);
+        }, { once: true });
+    });
+});
+
+// Efeito de partículas (opcional - para o hero)
+function createParticles() {
+    const hero = document.querySelector('.hero');
+    if (!hero) return;
+    
+    for (let i = 0; i < 50; i++) {
+        const particle = document.createElement('div');
+        particle.style.cssText = `
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: linear-gradient(135deg, #6366f1, #ec4899);
+            border-radius: 50%;
+            left: ${Math.random() * 100}%;
+            top: ${Math.random() * 100}%;
+            animation: floatParticle ${3 + Math.random() * 5}s linear infinite;
+            opacity: ${0.3 + Math.random() * 0.5};
+        `;
+        hero.appendChild(particle);
+    }
+}
+
+// Adicionar animação de partículas
+const particleStyle = document.createElement('style');
+particleStyle.textContent = `
+    @keyframes floatParticle {
+        0% {
+            transform: translateY(0) translateX(0);
+            opacity: 0;
+        }
+        10% {
+            opacity: 1;
+        }
+        90% {
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(-100vh) translateX(${Math.random() * 100 - 50}px);
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(particleStyle);
+
+// Iniciar partículas após o load
+window.addEventListener('load', () => {
+    createParticles();
+});
+
+// Efeito de hover em cards
+document.querySelectorAll('.feature-card, .player-card, .info-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        const rotateX = (y - centerY) / 20;
+        const rotateY = (centerX - x) / 20;
+        
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+    });
+    
+    card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+    });
+});
+
+// Smooth scroll para links âncora
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
